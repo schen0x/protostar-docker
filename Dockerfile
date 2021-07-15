@@ -5,12 +5,13 @@ RUN mkdir /protostar
 WORKDIR /protostar
 
 # Install requirements 
-RUN apt update && apt install build-essential -y && apt-get install manpages-dev openssh-server git gdb -y
+RUN apt update && apt install build-essential -y && apt-get install manpages-dev openssh-server git gdb gcc tmux vim -y
 
 # Configure SSH server
 RUN mkdir /var/run/sshd
-RUN echo 'root:protostar' | chpasswd
-COPY ./sshd_config /etc/ssh/sshd_config
+RUN echo 'root:root' | chpasswd
+
+COPY ./conf/sshd_config /etc/ssh/sshd_config
 
 # SSH login fix. Otherwise user is kicked off after login
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
@@ -19,7 +20,7 @@ ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
 # Disable ASLR
-COPY ./01-disable-aslr.conf /etc/sysctl.d/
+COPY ./conf/01-disable-aslr.conf /etc/sysctl.d/
 
 EXPOSE 22
 

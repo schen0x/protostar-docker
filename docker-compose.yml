@@ -1,0 +1,12 @@
+version: '3'
+# ref: https://docs.docker.com/compose/compose-file/compose-file-v3/
+services:
+    web:
+        build: .
+        container_name: protostar
+        ports:
+            - "2222:22"
+        # for live code-update.
+        volumes:
+            - ./share:/share
+
