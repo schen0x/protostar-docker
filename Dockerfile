@@ -28,17 +28,15 @@ EXPOSE 22
 CMD ["echo 0 | tee /proc/sys/kernel/randomize_va_space"]
 
 # copy protostar code source
-COPY . .
-
-# move protostar bins
-RUN mv ./protostar /opt
+COPY ./protostar /opt/protostar
 RUN chmod u+s /opt/protostar/bin/*
 
 # install tools
-RUN chmod u+x ./tools/*
-# RUN ./tools/checksec
-# RUN ./tools/pwntools
-# RUN ./tools/radare2
+COPY ./tools /opt/tools/*
+RUN chmod u+x /opt/tools/*
+# RUN /opt/tools/checksec
+# RUN /opt/tools/pwntools
+# RUN /opt/tools/radare2
 
 # create a user
 RUN useradd -ms /bin/bash proto

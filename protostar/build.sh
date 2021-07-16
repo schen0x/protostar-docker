@@ -2,9 +2,9 @@
 # By th3happybit (Oussama Messabih)
 #!/bin/bash
 echo "Building..."
-mkdir ./bin
+mkdir -p ./bin
 
-for i in ./challenges/???*
+for i in ./src/*.c
 do
 	basename "$i"
 	f="$(basename -- $i)"
