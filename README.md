@@ -30,9 +30,16 @@ requirements:
 
 ### How to use
 
-`sudo docker-compose up`
-`ssh root@127.0.0.1 -p 2222`, password `root`
-`ssh proto@127.0.0.1 -p 2222`, password `proto`
-You may alias the command or do whatever you want.
+1. spin up the container: `sudo docker-compose up`
+2. ssh into the server:
 
-to stop server, use `sudo docker-compose down`
+```sh
+ssh root@127.0.0.1 -p 2222   # password root, as root
+ssh proto@127.0.0.1 -p 2222  # password proto, as user 
+```
+
+3. the binaries are in `/opt/protostar/bin`
+
+4. time has changed. use the original binary instead of recompiling it.
+
+5. to stop the server: `sudo docker-compose down`

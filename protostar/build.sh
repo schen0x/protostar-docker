@@ -8,7 +8,7 @@ for i in ./src/*.c
 do
 	basename "$i"
 	f="$(basename -- $i)"
-	gcc "$i" -o "./bin/${f%.*}"
+	gcc "$i" -o "./bin/${f%.*}" -ggdb
 done
 
 chmod u+s ./bin/*

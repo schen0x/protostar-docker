@@ -1,9 +1,5 @@
 FROM i386/ubuntu
 
-RUN mkdir /protostar
-
-WORKDIR /protostar
-
 # Install requirements 
 RUN apt update && apt install build-essential -y && apt-get install manpages-dev openssh-server git gdb gcc tmux vim -y
 
