@@ -9,4 +9,7 @@ services:
         # for live code-update.
         volumes:
             - ./share:/share
+        security_opt:
+            - seccomp:unconfined
+            # allow the disable of ASLR
 
